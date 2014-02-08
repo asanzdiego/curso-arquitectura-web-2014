@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Arquitectura Web" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <meta name="copyright" content="Arquitectura Web - Adolfo Sanz De Diego -  Enero 2014" /> 
+  <title>Arquitectura Web</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Arquitectura Web</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Enero 2014</h4>
+</section>
+
+<section id="acerca-de" class="titleslide slide level1"><h1><span class="header-section-number">1</span> Acerca de</h1></section><section id="índice" class="slide level2">
+<h2><span class="header-section-number">1.1</span> Índice</h2>
+<pre><code>- Acerca de
+- Introducción
+- Historia evolutiva de la Web
+- Arquitectura web
+- Entorno de ejecución en servidor
+- Tecnologías de servidor
+- Entorno de ejecución en cliente
+- Tecnologías de cliente</code></pre>
+</section><section id="adolfo-sanz-de-diego" class="slide level2">
+<h2><span class="header-section-number">1.2</span> Adolfo Sanz De Diego</h2>
+<ul>
+<li><strong>Antiguo programador web JEE</strong></li>
+<li>Hoy en día:
+<ul>
+<li><strong>Profesor de FP de informática</strong>:
+<ul>
+<li>Hardware, Sistemas Operativos</li>
+<li>Redes, Programación</li>
+</ul></li>
+<li><strong>Formador Freelance</strong>:
+<ul>
+<li>Java, Android</li>
+<li>JavaScript, jQuery</li>
+<li>JSF, Spring, Hibernate</li>
+<li>Groovy &amp; Grails</li>
+</ul></li>
+<li><strong>Me gusta programar</strong></li>
+</ul></li>
+</ul>
+</section><section id="hackalover" class="slide level2">
+<h2><span class="header-section-number">1.3</span> Hackalover</h2>
+<figure>
+<img src="../img/hackathon-lovers-logo.png" />
+</figure>
+<ul>
+<li><strong>Para los amantes de los hackathones</strong>.
+<ul>
+<li><strong>Meetup</strong>: <a href="http://www.meetup.com/Hackathon-Lovers/">http://www.meetup.com/Hackathon-Lovers/</a></li>
+<li><strong>LinkedIn</strong>: <a href="http://www.linkedin.com/groups/Hackathon-Lovers-6510465">http://www.linkedin.com/groups/Hackathon-Lovers-6510465</a></li>
+<li><strong>Tumblr</strong>: <a href="http://hackathonlovers.tumblr.com/">http://hackathonlovers.tumblr.com/</a></li>
+<li><strong>Twitter</strong>: <a href="http://twitter.com/HackathonLovers">http://twitter.com/HackathonLovers</a></li>
+<li><strong>YouTube</strong>: <a href="http://www.youtube.com/channel/UCRwSe7jK-y62BMvIiNBV1qw">http://www.youtube.com/channel/UCRwSe7jK-y62BMvIiNBV1qw</a></li>
+</ul></li>
+</ul>
+</section><section id="tweets-sentiment" class="slide level2">
+<h2><span class="header-section-number">1.4</span> Tweets Sentiment</h2>
+<figure>
+<img src="../img/tweets-sentiment-logo.png" />
+</figure>
+<ul>
+<li>Es un <strong>analizador de tweets</strong> que extrae información semántica para conocer si el sentimiento general de los tweets de un determinado tema es positivo o negativo.
+<ul>
+<li><strong>Web</strong>: <a href="http://tweetssentiment.com/">http://tweetssentiment.com/</a></li>
+<li><strong>Twitter</strong>: <a href="http://twitter.com/TweetsSentiment">http://twitter.com/TweetsSentiment</a></li>
+</ul></li>
+</ul>
+</section><section id="donde-encontrarme" class="slide level2">
+<h2><span class="header-section-number">1.5</span> ¿Donde encontrarme?</h2>
+<ul>
+<li>Mi nick: <strong>asanzdiego</strong>
+<ul>
+<li>AboutMe: <a href="http://about.me/asanzdiego">http://about.me/asanzdiego</a></li>
+<li>Blog: <a href="http://asanzdiego.blogspot.com.es">http://asanzdiego.blogspot.com.es</a></li>
+<li>GitHub: <a href="http://github.com/asanzdiego">http://github.com/asanzdiego</a></li>
+<li>Google+: <a href="http://plus.google.com/+AdolfoSanzDeDiego">http://plus.google.com/+AdolfoSanzDeDiego</a></li>
+<li>LinkedIn: <a href="http://www.linkedin.com/in/asanzdiego">http://www.linkedin.com/in/asanzdiego</a></li>
+<li>SlideShare: <a href="http://www.slideshare.net/asanzdiego">http://www.slideshare.net/asanzdiego</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">http://twitter.com/asanzdiego</a></li>
+</ul></li>
+</ul>
+</section><section id="créditos" class="slide level2">
+<h2><span class="header-section-number">1.6</span> Créditos</h2>
+<ul>
+<li>Agradecimientos a <strong>Micael Gallego</strong> (<a href="http://twitter.com/micael_gallego">http://twitter.com/micael_gallego</a>)
+<ul>
+<li><a href="http://www.slideshare.net/micaelgallego/qu-es-la-web-30036167">Introducción a las aplicaciones web</a></li>
+<li><a href="http://www.slideshare.net/micaelgallego/tema2-tecnologas-de-desarrollo-de-aplicaciones-web">Tecnologías de desarrollo de aplicaciones web)</a></li>
+</ul></li>
+<li>Estas <strong>transparencias</strong> están hechas con:
+<ul>
+<li><a href="https://github.com/asanzdiego/marckdownslides">https://github.com/asanzdiego/marckdownslides</a></li>
+</ul></li>
+</ul>
+</section><section id="licencia" class="slide level2">
+<h2><span class="header-section-number">1.7</span> Licencia</h2>
+<ul>
+<li>Estas <strong>transparencias</strong> están bajo una licencia:
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+<li>El <strong>código</strong> de los programas están bajo una licencia:
+<ul>
+<li><a href="http://www.viti.es/gnu/licenses/gpl.html">GPL 3.0</a></li>
+</ul></li>
+</ul>
+</section><section id="fuentes" class="slide level2">
+<h2><span class="header-section-number">1.8</span> Fuentes</h2>
+<pre><code>- [SlideShare](http://www.slideshare.net/asanzdiego/arquitectura-web)
+- [Deck Slides](http://asanzdiego.github.io/arquitectura-web/slides/export/arquitectura-web-deck-slides.html)
+- [Reveal Slides](http://asanzdiego.github.io/arquitectura-web/slides/export/arquitectura-web-reveal-slides.html)
+- [Plain HTML](http://asanzdiego.github.io/arquitectura-web/slides/export/arquitectura-web.html)</code></pre>
+</section>
+<section id="introducción" class="titleslide slide level1"><h1><span class="header-section-number">2</span> Introducción</h1></section><section id="qué-es-internet" class="slide level2">
+<h2><span class="header-section-number">2.1</span> ¿Qué es Internet?</h2>
+<ul>
+<li>Internet es un conjunto descentralizado de <strong>redes de comunicación interconectadas</strong> que utilizan la familia de protocolos TCP/IP.</li>
+<li>Funciona como una <strong>red lógica única</strong>, de alcance <strong>mundial</strong>, aunque esté formada por multitud de redes físicas <strong>heterogéneas</strong>.</li>
+<li>Uno de los servicios que más éxito ha tenido en Internet ha sido la <strong>World Wide Web</strong> (WWW, o &quot;la Web&quot;), aunque es habitual la confusión entre ambos términos por gente no experta.</li>
+</ul>
+</section><section id="qué-es-la-web" class="slide level2">
+<h2><span class="header-section-number">2.2</span> ¿Qué es La Web?</h2>
+<ul>
+<li>La Web es un conjunto de protocolos, estándares y tecnologías, basadas en Internet, diseñado originalmente para la consulta remota de información en <strong>archivos de hipertexto</strong>.</li>
+</ul>
+</section><section id="otros-servicios" class="slide level2">
+<h2><span class="header-section-number">2.3</span> Otros servicios</h2>
+<ul>
+<li>Existen muchos otros servicios y protocolos en Internet:
+<ul>
+<li>Envío y recepción de correo electrónico (POP3, IMAP, SMTP)</li>
+<li>Transmisión de archivos (SSH, FTP, P2P, HTTP)</li>
+<li>Mensajería instantánea (IRC, XMPP)</li>
+<li>Transmisión de contenido multimedia (VoIP, IPTV, RTP)</li>
+<li>Conexión remota por consola (SSH, Telnet)</li>
+<li>Conexión remota gráfica (VNC)</li>
+</ul></li>
+</ul>
+</section><section id="la-web-1.0" class="slide level2">
+<h2><span class="header-section-number">2.4</span> La Web 1.0</h2>
+<ul>
+<li>Al principio, el <strong>usuario sólo leía contenido</strong> publicado por otros. Era un contenido muy estático, y muy difícil de editar por el propio usuario.</li>
+<li>El navegador web era la única aplicación &quot;conectada&quot;, y hay que reconocerlo... la web era sobre todo para Frikis.</li>
+</ul>
+</section><section id="las-cosas-empiezan-a-cambiar" class="slide level2">
+<h2><span class="header-section-number">2.5</span> Las cosas empiezan a cambiar</h2>
+<ul>
+<li>Poco a poco las tecnologías se desarrollan y los <strong>usuarios empiezan a tener más facilidades para editar el propio contenido</strong>.</li>
+<li>Google se empieza a popularizar, nace Blogger, WordPress, la Wikipedia, LinkedIn...</li>
+</ul>
+</section><section id="nace-la-web-2.0" class="slide level2">
+<h2><span class="header-section-number">2.6</span> Nace la Web 2.0</h2>
+<ul>
+<li>En 2004 Dale Dougherty (O'Reilly) acuña el término Web 2.0 para referirse a La Web como una plataforma con aplicaciones ligeras, dinámicas y en constante evolución.</li>
+<li>Con la Web 2.0, las páginas web dejan de ser simples documentos online para convertirse en aplicaciones web, y es entonces cuando los <strong>usuarios toman el control de los contenidos</strong>.</li>
+</ul>
+</section><section id="web-1.0-vs-web-2.0" class="slide level2">
+<h2><span class="header-section-number">2.7</span> Web 1.0 VS Web 2.0</h2>
+<figure>
+<img src="../img/web1-vs-web2.png" />
+</figure>
+</section>
+<section id="historia-evolutiva-de-la-web" class="titleslide slide level1"><h1><span class="header-section-number">3</span> Historia evolutiva de la Web</h1></section><section id="los-orígenes-de-internet" class="slide level2">
+<h2><span class="header-section-number">3.1</span> Los orígenes de Internet</h2>
+<ul>
+<li>En <strong>1962</strong>, a causa de la guerra fría con la URSS, las Fuerzas Aéreas de Estados Unidos pidieron a un reducido grupo de investigadores que creara una <strong>red de comunicaciones militares que pudiera resistir un ataque nuclear</strong>.</li>
+<li>En <strong>1964</strong>, <strong>Paul Baran</strong> tuvo la idea de crear una <strong>red en forma de telaraña</strong>. El concepto de esta red se basaba en un sistema descentralizado, de manera que la red pudiera seguir funcionando aunque se destruyeran uno o varios equipos.</li>
+</ul>
+</section><section id="arpanet-1969" class="slide level2">
+<h2><span class="header-section-number">3.2</span> Arpanet (1969)</h2>
+<figure>
+<img src="../img/arpanet.png" />
+</figure>
+<ul>
+<li>En <strong>1969</strong>, el proyecto militar ARPA (Agencia de Proyectos de Investigación Avanzados, una división del Ministerio de Defensa de Estados Unidos) creó la red experimental <strong>ARPANET</strong> cuyo fin era conectar las principales universidades de EEUU.</li>
+</ul>
+</section><section id="nace-la-web-1989" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Nace La Web (1989)</h2>
+<figure>
+<img src="../img/inventores.png" />
+</figure>
+<ul>
+<li>En <strong>1989</strong>, <strong>Tim Berners-Lee junto a Robert Cailliau crean la World Wide Web</strong>. Habilitaron los dominios o direcciones con letras (en vez de los complejos códigos IP). También inventaron los enlaces. Esto marcó el nacimiento de La Web como lo conocemos hoy en día.</li>
+</ul>
+</section><section id="yahoo-1994" class="slide level2">
+<h2><span class="header-section-number">3.4</span> Yahoo (1994)</h2>
+<figure>
+<img src="../img/yahoo.png" />
+</figure>
+<ul>
+<li>En <strong>1994</strong>, <strong>Jerry Yang y David Filo</strong>, estudiantes de Stanford, crean <strong>Yahoo!</strong> un directorio de sitios según la categoría de su contenido, para así intentar poner orden dentro del bazar, cada día más extenso, que se estaba convirtiendo Internet.</li>
+</ul>
+</section><section id="hotmail-1996" class="slide level2">
+<h2><span class="header-section-number">3.5</span> Hotmail (1996)</h2>
+<figure>
+<img src="../img/hotmail.png" />
+</figure>
+<ul>
+<li>En <strong>1996</strong>, se lanzó <strong>Hotmail</strong> el correo electrónico gratuito de <strong>Microsoft</strong>.</li>
+</ul>
+</section><section id="google-1997" class="slide level2">
+<h2><span class="header-section-number">3.6</span> Google (1997)</h2>
+<figure>
+<img src="../img/google.png" />
+</figure>
+<ul>
+<li>En <strong>1997</strong>, <strong>Larry Page y Sergey Brin</strong>, dos estudiantes de Stanford, crean <strong>Google</strong>, un sistema que analiza los enlaces que conectan los sitios de Internet para hallar información de manera efectiva.</li>
+</ul>
+</section><section id="las-.com-1998" class="slide level2">
+<h2><span class="header-section-number">3.7</span> Las '.com' (1998)</h2>
+<figure>
+<img src="../img/punto-com.png" />
+</figure>
+<ul>
+<li>En <strong>1998</strong>, bancos e inversionistas volcaron miles de millones de dólares al financiamiento de todo tipo de empresas basadas en la Red, conocidas como <strong>las 'punto-com'</strong>.</li>
+</ul>
+</section><section id="napster-1998" class="slide level2">
+<h2><span class="header-section-number">3.8</span> Napster (1998)</h2>
+<figure>
+<img src="../img/napster.png" />
+</figure>
+<ul>
+<li>En <strong>1998</strong>, <strong>Sean Parker y Shawn Fanning</strong> crean <strong>Napster</strong> uno de los primeros programas <strong>P2P</strong>.</li>
+</ul>
+</section><section id="xmpp-1999" class="slide level2">
+<h2><span class="header-section-number">3.9</span> XMPP (1999)</h2>
+<figure>
+<img src="../img/xmpp.png" />
+</figure>
+<ul>
+<li>En <strong>1999</strong>, nace <strong>XMPP</strong>, un protocolo abierto ideado para la <strong>mensajería instantánea</strong>.</li>
+</ul>
+</section><section id="blogger-1999" class="slide level2">
+<h2><span class="header-section-number">3.10</span> Blogger (1999)</h2>
+<figure>
+<img src="../img/blogger.png" />
+</figure>
+<ul>
+<li>En <strong>1999</strong>, también nace <strong>Blogger</strong>, un servicio web para gestionar blogs.</li>
+</ul>
+</section><section id="la-burbuja-2001" class="slide level2">
+<h2><span class="header-section-number">3.11</span> La burbuja (2001)</h2>
+<figure>
+<img src="../img/estalla-burbuja.png" />
+</figure>
+<ul>
+<li>En <strong>2001</strong>, <strong>estalla la burbuja de las 'punto-com'</strong> que llevó a la quiebra a la mayoría.</li>
+</ul>
+</section><section id="wikipedia-2001" class="slide level2">
+<h2><span class="header-section-number">3.12</span> Wikipedia (2001)</h2>
+<figure>
+<img src="../img/wikipedia.png" />
+</figure>
+<ul>
+<li>En <strong>2001</strong>, salió a la luz <strong>Wikipedia</strong>, una enciclopedia virtual que a diario se alimenta y se corrige por sus propios usuarios.</li>
+</ul>
+</section><section id="the-pirate-bay-2003" class="slide level2">
+<h2><span class="header-section-number">3.13</span> The Pirate Bay (2003)</h2>
+<figure>
+<img src="../img/the-pirate-bay.png" />
+</figure>
+<ul>
+<li>En <strong>2003</strong>, nace en Suecia el portal de búsqueda de torrents <strong>The Pirate Bay</strong>.</li>
+</ul>
+</section><section id="linkedin-2003" class="slide level2">
+<h2><span class="header-section-number">3.14</span> LinkedIn (2003)</h2>
+<figure>
+<img src="../img/linkedin.png" />
+</figure>
+<ul>
+<li>En <strong>2003</strong>, se lanza la red social de contactos profesionales <strong>LinkedIn</strong>.</li>
+</ul>
+</section><section id="wordpress-2003" class="slide level2">
+<h2><span class="header-section-number">3.15</span> WordPress (2003)</h2>
+<figure>
+<img src="../img/wordpress.png" />
+</figure>
+<p>En <strong>2003</strong>, se lanza la plataforma de gestión de blogs <strong>WordPress</strong>.</p>
+</section><section id="gmail-2004" class="slide level2">
+<h2><span class="header-section-number">3.16</span> GMail (2004)</h2>
+<figure>
+<img src="../img/gmail.png" />
+</figure>
+<ul>
+<li>En <strong>2004</strong>, nace <strong>GMail</strong> el correo electrónico gratuito de <strong>Google</strong>.</li>
+</ul>
+</section><section id="facebook-2004" class="slide level2">
+<h2><span class="header-section-number">3.17</span> Facebook (2004)</h2>
+<figure>
+<img src="../img/facebook.png" />
+</figure>
+<ul>
+<li>En <strong>2004</strong>, <strong>Mark Zuckerberg</strong>, estudiante de la Universidad de Harvard, crea <strong>Facebook</strong>, una de las redes sociales más conocidas.</li>
+</ul>
+</section><section id="youtube-2005" class="slide level2">
+<h2><span class="header-section-number">3.18</span> Youtube (2005)</h2>
+<figure>
+<img src="../img/youtube.png" />
+</figure>
+<ul>
+<li>En <strong>2005</strong>, con el auge de la banda ancha, el vídeo en línea deja de ser una utopía y ve la luz el famoso portal de <strong>Youtube</strong>.</li>
+</ul>
+</section><section id="twitter-2006" class="slide level2">
+<h2><span class="header-section-number">3.19</span> Twitter (2006)</h2>
+<figure>
+<img src="../img/twitter.png" />
+</figure>
+<ul>
+<li>En <strong>2006</strong>, <strong>Jack Dorsey</strong> lanza la famosa red social de microblogging <strong>Twitter</strong>.</li>
+</ul>
+</section><section id="hoy" class="slide level2">
+<h2><span class="header-section-number">3.20</span> Hoy</h2>
+<ul>
+<li>En <strong>2009</strong>, Internet supera los <strong>180 millones de sitios web</strong>.</li>
+<li>En <strong>2012</strong>, <strong>Facebook supera los 1000 millones de usuarios</strong>, y está traducido a 70 idiomas.</li>
+<li>En <strong>2013</strong>, <strong>LinkedIn supera los 225 millones de usuarios</strong> en más 200 países y territorios.</li>
+<li>En <strong>2013</strong>, <strong>Twitter supera los 280 millones de usuarios activos</strong>, y los 480 millones de perfiles.</li>
+<li>En <strong>2013</strong>, se superan los <strong>1000 millones de dispositivos Android</strong> en el mundo.</li>
+</ul>
+</section>
+<section id="arquitectura-web" class="titleslide slide level1"><h1><span class="header-section-number">4</span> Arquitectura web</h1></section><section id="cliente-servidor" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Cliente-servidor</h2>
+<ul>
+<li>La arquitectura web es una arquitectura cliente-servidor formada por los siguientes elementos:
+<ul>
+<li><strong>Un navegador</strong>: Hace de cliente y realiza peticiones solicitando recursos a los servidores web.</li>
+<li><strong>Un servidor web</strong>: Recibe peticiones de clientes y responde a esas peticiones enviado un recurso o notificando un error.</li>
+<li><strong>El protocolo http</strong>: Es el protocolo basado en TCP/IP que se utiliza para que el navegador realice las peticiones al servidor web y este responda.</li>
+</ul></li>
+</ul>
+</section><section id="páginas-estáticas" class="slide level2">
+<h2><span class="header-section-number">4.2</span> Páginas estáticas</h2>
+<ul>
+<li>En los comienzos de la web, todos los sitios web eran conjuntos de páginas web en forma de ficheros HTML.</li>
+<li>Los sitios web <strong>eran como libros</strong> pero con navegación mediante enlaces en vez de navegación secuencial.</li>
+<li>La edición de sitios web se realizaba con herramientas similares a la edición de documentos (p.e. Microsoft FrontPage)</li>
+<li>A estas páginas se las denominaba <strong>páginas web estáticas</strong>.</li>
+</ul>
+</section><section id="páginas-dinámicas" class="slide level2">
+<h2><span class="header-section-number">4.3</span> Páginas dinámicas</h2>
+<ul>
+<li>Poco a poco las páginas <strong>empezaron a ser más dinámicas</strong>.</li>
+<li>En vez de ser ficheros HTML en el disco, empezaban a ser pequeños programas que se ejecutaban cada vez que un usuario pedía una página.</li>
+<li>Inicialmente eran cambios mínimos (contador de visitas, fecha actual, cambiar la imagen de cabecera,...) con lenguajes de script como PERL y PHP.</li>
+</ul>
+</section><section id="aplicaciones-web" class="slide level2">
+<h2><span class="header-section-number">4.4</span> Aplicaciones web</h2>
+<ul>
+<li>Los cambios serían cada vez más profundos y las páginas web se convertirían en completas aplicaciones web.</li>
+<li>Una aplicación web es aquella que los usuarios utilizan <strong>accediendo a un servidor web</strong> a través de Internet mediante un navegador.</li>
+<li>Tienen la ventaja de ser independientes del Sistema Operativo, y de que son fáciles de actualizar y mantener.</li>
+</ul>
+</section>
+<section id="entorno-de-ejecución-en-servidor" class="titleslide slide level1"><h1><span class="header-section-number">5</span> Entorno de ejecución en servidor</h1></section><section id="servidores-web-estáticos" class="slide level2">
+<h2><span class="header-section-number">5.1</span> Servidores web estáticos</h2>
+<ul>
+<li>Al principio, la forma de trabajar con los serivoderes web era de la siguiente forma:
+<ul>
+<li>Primero, el navegador hace una petición al servidor mediante http.</li>
+<li>Seguidamente, el servidor transforma la URL en una ruta el sistema de archivos y devuelve el archivo al navegador.</li>
+</ul></li>
+<li>En este caso, para <strong>una misma URL el servidor siempre va a devolver el mismo recurso</strong>, siendo normalmente estos recursos ficheros HTML, CSS, JavaScript, imágenes...</li>
+</ul>
+</section><section id="servidores-web-dinámicos-i" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Servidores web dinámicos (I)</h2>
+<ul>
+<li>Pero hoy en día, la mayoría de los servidores web permiten que en cada petición se ejecute un programa que genera dinámicamente el recurso que se envía al usuario (server-side scripting).</li>
+<li>Ahora para <strong>una misma URL el servidor puede devolver un recurso distinto</strong>.</li>
+<li>A este contenido generado &quot;al vuelo&quot; se le denomina <strong>contenido dinámico</strong>, en contraposición al contenido estático obtenido del sistema de archivos.</li>
+</ul>
+</section><section id="servidores-web-dinámicos-ii" class="slide level2">
+<h2><span class="header-section-number">5.3</span> Servidores web dinámicos (II)</h2>
+<ul>
+<li>Es bastante habitual que el contenido dinámico se genere con la información de una <strong>base de datos</strong>.</li>
+<li>Los servidores web con contenido dinámico no sólo envían recursos al navegador, <strong>también pueden procesar información que les llega</strong> del mismo:
+<ul>
+<li>Datos contenidos en formularios web.</li>
+<li>Ficheros enviados desde el navegador.</li>
+<li>Información codificada en los enlaces que pulsan los usuarios.</li>
+</ul></li>
+<li>Esta funcionalidad permite el desarrollo de completas <strong>aplicaciones web</strong>.</li>
+</ul>
+</section><section id="historia-de-los-servidores-web" class="slide level2">
+<h2><span class="header-section-number">5.4</span> Historia de los servidores web</h2>
+<ul>
+<li>Los principales servidores web son o han sido:
+<ul>
+<li>CERN httpd (1990)</li>
+<li>Apache (1995)</li>
+<li>IIS (1995)</li>
+<li>NginX (2004)</li>
+</ul></li>
+</ul>
+</section><section id="cern-httpd-1990" class="slide level2">
+<h2><span class="header-section-number">5.5</span> CERN httpd (1990)</h2>
+<ul>
+<li>Creado por Tim Berners-Lee y otros, fué <strong>el primer servidor web</strong>.</li>
+<li>Al principio sólo corría en ordenadores NeXTSTEP, pero más adelante fue portado a otros sistemas.</li>
+<li>En agosto de 1991, Tim Berners-Lee anunció la disponibilidad del código fuente y del software World Wide Web desde el sitio FTP CERN.</li>
+<li>El desarrollo del CERN httpd fue adquirido por W3C y la última versión es 1996, y hoy está totalmente en desuso.</li>
+</ul>
+</section><section id="apache-1995" class="slide level2">
+<h2><span class="header-section-number">5.6</span> Apache (1995)</h2>
+<figure>
+<img src="../img/apache.png" />
+</figure>
+<ul>
+<li>Lanzado en <strong>1995</strong> y desarrollado por la Apache Software Fundation, hoy en día es el <strong>servidor más popular</strong> (Enero de 2014 con 42% cuota)</li>
+<li>Es un servidor web multiplataforma y con una licencia de Software Libre (Apache License)</li>
+<li>Su nombre completo es Apache HTTP Server Project.</li>
+</ul>
+</section><section id="iis-1995" class="slide level2">
+<h2><span class="header-section-number">5.7</span> IIS (1995)</h2>
+<figure>
+<img src="../img/iis-8.png" />
+</figure>
+<ul>
+<li>Lanzado también en <strong>1995</strong> y desarrollado por Microsoft, hoy en día es el <strong>segundo servidor más usado</strong> (Enero de 2014 con 30% cuota)</li>
+<li>Está integrado en Windows Server, y se compagina bien con la base de datos MS SQL Server.</li>
+<li>Su nombre completo es Microsoft Internet Information Services.</li>
+</ul>
+</section><section id="nginx-2004" class="slide level2">
+<h2><span class="header-section-number">5.8</span> NginX (2004)</h2>
+<figure>
+<img src="../img/nginx.png" />
+</figure>
+<ul>
+<li>Lanzado en <strong>2004</strong> y desarrollado por el ruso Igor Sysoev, hoy en día es el <strong>tercer servidor más usado</strong> a (Enero de 2014 con 14% cuota)</li>
+<li>Es un servidor multiplataforma y con una licencia de Software Libre (tipo BSD)</li>
+<li>Es muy rápido y se suele usar como balanceador de carga.</li>
+</ul>
+</section><section id="cuota-servidores-web" class="slide level2">
+<h2><span class="header-section-number">5.9</span> Cuota servidores web</h2>
+<figure>
+<img src="../img/cuota-servidores-web.png" />
+</figure>
+<div style="text-align:center">
+<a href="http://news.netcraft.com">http://news.netcraft.com</a>
+</div>
+</section>
+<section id="tecnologías-de-servidor" class="titleslide slide level1"><h1><span class="header-section-number">6</span> Tecnologías de servidor</h1></section><section id="introducción-1" class="slide level2">
+<h2><span class="header-section-number">6.1</span> Introducción</h2>
+<ul>
+<li>Los estándares son muy importantes en los navegadores web (HTML, CSS, JavaScript) porque la web tiene que ser compatible con cualquier dispositivo.</li>
+<li>En cambio los estándares no son tan necesarios en el servidor, y <strong>cada organización desarrolla su servidor con la tecnología de su elección</strong>.</li>
+</ul>
+</section><section id="cuotas-tecnologías" class="slide level2">
+<h2><span class="header-section-number">6.2</span> Cuotas tecnologías</h2>
+<figure>
+<img src="../img/cuota-tecnologias-servidores-web.png" />
+</figure>
+<div style="text-align:center">
+<a href="http://w3techs.com">http://w3techs.com</a>
+</div>
+<ul>
+<li>Existen multitud de tecnologías de construcción de aplicaciones web en el servidor, siendo <strong>las más usadas</strong>:
+<ul>
+<li>PHP, ASP.NET, Java EE.</li>
+</ul></li>
+</ul>
+</section><section id="otras-tecnologías" class="slide level2">
+<h2><span class="header-section-number">6.3</span> Otras tecnologías</h2>
+<figure>
+<img src="../img/otras-tecnologias-servidores-web.png" />
+</figure>
+<ul>
+<li>Existen otros menos usadas, pero con un <strong>gran crecimiento</strong> de pupularidad:
+<ul>
+<li>Ruby on Rails, Grails (Groovy), Django (Python), Node (JavaScript), etc.</li>
+</ul></li>
+</ul>
+</section><section id="php-i" class="slide level2">
+<h2><span class="header-section-number">6.4</span> PHP (I)</h2>
+<figure>
+<img src="../img/php.png" />
+</figure>
+<ul>
+<li>PHP (acrónimo recursivo que significa PHP Hypertext Pre-processor) es un lenguaje de programación originalmente <strong>diseñado para el desarrollo web de contenido dinámico</strong>.</li>
+<li>Fue uno de los primeros en permitir combinarse con el HTML del propio documento.</li>
+</ul>
+</section><section id="php-ii" class="slide level2">
+<h2><span class="header-section-number">6.5</span> PHP (II)</h2>
+<ul>
+<li>Fue creado originalmente por Rasmus Lerdorf en 1994 y actualmente el lenguaje sigue siendo desarrollado con una licencia libre (PHP license) por la comunidad en PHP Group, pues <strong>no existe un organismo de estandarización</strong>.</li>
+<li>Puede ser usado en la mayoría de los servidores web y en casi todos los sistemas operativos sin <strong>ningún costo</strong>.</li>
+</ul>
+</section><section id="php-iii" class="slide level2">
+<h2><span class="header-section-number">6.6</span> PHP (III)</h2>
+<ul>
+<li>Ejemplos como <strong>Facebook o Wordpress</strong> son sin duda una muestra importante de la popularidad de PHP.</li>
+</ul>
+<figure>
+<img src="../img/php-exito.png" />
+</figure>
+</section><section id="php-iv" class="slide level2">
+<h2><span class="header-section-number">6.7</span> PHP (IV)</h2>
+<ul>
+<li>Es la tecnología de programación del lado del servidor <strong>más usada</strong> en el pasado y en el presente.</li>
+<li>Se integra normalmente con Apache y MySQL en entornos Linux en un paquete llamado <strong>LAMP</strong></li>
+</ul>
+<figure>
+<img src="../img/lamp.png" />
+</figure>
+</section><section id="php-v" class="slide level2">
+<h2><span class="header-section-number">6.8</span> PHP (V)</h2>
+<ul>
+<li>Existen <strong>multitud de frameworks</strong> para el desarrollo de aplicaciones PHP: CakePHP, CodeIgniter, Symfony, YiiZend, etc.</li>
+</ul>
+<figure>
+<img src="../img/php-frameworks.png" />
+</figure>
+</section><section id="asp.net-i" class="slide level2">
+<h2><span class="header-section-number">6.9</span> ASP.NET (I)</h2>
+<figure>
+<img src="../img/asp-net.png" />
+</figure>
+<ul>
+<li>ASP.NET es un framework para aplicaciones web <strong>desarrollado por Microsoft</strong> y usado para construir páginas web dinámicas.</li>
+<li>Es sucesora de la tecnología Active Server Pages (ASP), tiene una licencia propietaria y está pensada para ser usada en plataformas Windows.</li>
+<li>Está pensada para ser programado en el lenguaje C#, aunque permite cualquier lenguaje de la plataforma .NET.</li>
+</ul>
+</section><section id="asp.net-ii" class="slide level2">
+<h2><span class="header-section-number">6.10</span> ASP.NET (II)</h2>
+<ul>
+<li>La mayoría de las librerías para ASP.NET son las oficiales proporcionadas por Microsoft: (I)
+<ul>
+<li><strong>Web Pages</strong>: permite combinar HTML con código ASP (similar a JSP y PHP)</li>
+<li><strong>Web Forms</strong>: permite construir aplicaciones web basadas en componentes (similar a JSF)</li>
+<li><strong>MVC Framework</strong>: permite desarrollar aplicaciones web usando el patrón modelo-vista-controlador</li>
+</ul></li>
+</ul>
+</section><section id="asp.net-iii" class="slide level2">
+<h2><span class="header-section-number">6.11</span> ASP.NET (III)</h2>
+<ul>
+<li>La mayoría de las librerías para ASP.NET son las oficiales proporcionadas por Microsoft: (II)
+<ul>
+<li><strong>AJAX</strong>: permite la actualización de datos sin la recarga completa de una página web.</li>
+<li><strong>Entity Framework</strong>: permite mapear objetos al paradigma relacional (similar a JPA)</li>
+<li><strong>Dynamic Data</strong>: permite crear aplicaciones web orientadas a datos (similar a Ruby on Rails)</li>
+</ul></li>
+</ul>
+</section><section id="java-ee-i" class="slide level2">
+<h2><span class="header-section-number">6.12</span> Java EE (I)</h2>
+<figure>
+<img src="../img/java.png" />
+</figure>
+<ul>
+<li>Java es un lenguaje de programación de <strong>propósito general</strong>, concurrente, orientado a objetos y basado en clases creado por James Gosling de Sun Microsystems y publicado en 1995.</li>
+<li>Sus componentes son generalmente compiladas a bytecode para que puedan ejecutarse en cualquier máquina virtual Java (<strong>JVM</strong>) sin importar la arquitectura de la computadora subyacente.</li>
+</ul>
+</section><section id="java-ee-ii" class="slide level2">
+<h2><span class="header-section-number">6.13</span> Java EE (II)</h2>
+<ul>
+<li>Java junto con C es el <strong>lenguaje más popular</strong> en el índice TIOBE.</li>
+</ul>
+<figure>
+<img src="../img/indice-tiobe.png" />
+</figure>
+<div style="text-align:center">
+<a href="http://www.tiobe.com/">http://www.tiobe.com/</a>
+</div>
+</section><section id="java-ee-iii" class="slide level2">
+<h2><span class="header-section-number">6.14</span> Java EE (III)</h2>
+<ul>
+<li>Java EE es la <strong>edición empresarial</strong> de la plataforma Java (lenguaje + JVM + bibliotecas), y está desarrollada por una coalición de empresas lideradas por Oracle, IBM, Red Hat, etc.</li>
+<li>Es una tecnología muy usada a nivel empresarial, y <strong>bastante estandarizada</strong> pues tiene una organización de estandarización propia llamada Java Community Process (<strong>JCP</strong>) que define los estándares de la plataforma.</li>
+</ul>
+</section><section id="java-ee-iv" class="slide level2">
+<h2><span class="header-section-number">6.15</span> Java EE (IV)</h2>
+<figure>
+<img src="../img/javaee.png" />
+</figure>
+</section><section id="java-ee-v" class="slide level2">
+<h2><span class="header-section-number">6.16</span> Java EE (V)</h2>
+<ul>
+<li>Estándares más importantes en Java EE: (I)
+<ul>
+<li><strong>Servlets</strong>: permite ejecutar de código Java ante una petición web en un servidor Java EE.</li>
+<li><strong>Applets</strong>: permite ejecutar de código Java dentro de un navegador web.</li>
+<li><strong>JSP (Java Server Pages)</strong>: permite combinar HTML con código Java para generar páginas web dinámicas.</li>
+<li><strong>JDBC (Java Database Conectivity)</strong>: permite la conexión a bases de datos relacionales desde Java.</li>
+</ul></li>
+</ul>
+</section><section id="java-ee-vi" class="slide level2">
+<h2><span class="header-section-number">6.17</span> Java EE (VI)</h2>
+<ul>
+<li>Estándares más importantes en Java EE: (II)
+<ul>
+<li><strong>JPA (Java Persistence API)</strong>: permite mapear objetos al paradigma relacional (ORM, Object Relational Mapping)</li>
+<li><strong>JSF (Java Server Faces)</strong>: permite construir aplicaciones web basadas en componentes reutilizables.</li>
+<li><strong>JMS (Java Messege Service)</strong>: permite la creación y gestión de colas de mensajes entre aplicaciones.</li>
+</ul></li>
+</ul>
+</section><section id="java-ee-vii" class="slide level2">
+<h2><span class="header-section-number">6.18</span> Java EE (VII)</h2>
+<ul>
+<li>Toda aplicación web Java EE tiene que ejecutarse en una <strong>servidor de aplicaciones Java EE</strong> (aunque luego se integre en Apache, NginX o IIS)</li>
+<li>Existen muchos tipos de servidores, dependiendo de sus funcionalidades/rendimiento y de su licencia/coste.</li>
+</ul>
+<figure>
+<img src="../img/servidores-jee.png" />
+</figure>
+</section><section id="java-ee-viii" class="slide level2">
+<h2><span class="header-section-number">6.19</span> Java EE (VIII)</h2>
+<ul>
+<li>Para desarrollar aplicaciones Java EE se utilizan IDEs y plugins:
+<ul>
+<li><strong>Eclipse</strong>: Fundación. Mucha diversidad, falta de integración. Software libre.</li>
+<li><strong>Netbeans</strong>: Oracle. Muy integrado. Software libre.</li>
+<li><strong>IntelliJ</strong>: Jetbrains. Muy integrado. Propietario.</li>
+</ul></li>
+</ul>
+<figure>
+<img src="../img/ides.png" />
+</figure>
+</section><section id="bases-de-datos" class="slide level2">
+<h2><span class="header-section-number">6.20</span> Bases de Datos</h2>
+<ul>
+<li>Las bases de datos tienen un papel muy importante en el desarrollo de aplicaciones web.</li>
+<li>Las más populares han sido las bases de datos <strong>relacionales</strong>, pero cada vez más se usan las bases de datos <strong>NoSQL</strong>.</li>
+</ul>
+</section><section id="bbdd-relacionales" class="slide level2">
+<h2><span class="header-section-number">6.21</span> BBDD relacionales</h2>
+<figure>
+<img src="../img/bd-relacionales.png" />
+</figure>
+<ul>
+<li>Son las bases de datos <strong>más populares</strong> en el desarrollo de aplicaciones.</li>
+<li>En el lado del <strong>software libre</strong> las más usadas son: Postgre SQL y MySQL,</li>
+<li>Y en lado del <strong>software privativo</strong> las más usadas son: Oracle y Microsoft SQL Server.</li>
+</ul>
+</section><section id="bbdd-nosql" class="slide level2">
+<h2><span class="header-section-number">6.22</span> BBDD NoSQL</h2>
+<figure>
+<img src="../img/bd-nosql.png" />
+</figure>
+<ul>
+<li>Como las aplicaciones web tienen muchas <strong>necesidades de escalabilidad y tolerancia a fallos</strong>, hay una nueva familia de bases de datos que se denominan genéricamente NoSQL, que se puede interpretar como: 'No SQL' o como 'Not Only SQL'</li>
+</ul>
+</section><section id="teorema-cap-i" class="slide level2">
+<h2><span class="header-section-number">6.23</span> Teorema CAP (I)</h2>
+<ul>
+<li>El teorema CAP o teorema Brewer, dice que en <strong>sistemas distribuidos</strong> es imposible garantizar a la vez: consistencia, disponibilidad y tolerancia a particiones.</li>
+</ul>
+</section><section id="teorema-cap-ii" class="slide level2">
+<h2><span class="header-section-number">6.24</span> Teorema CAP (II)</h2>
+<figure>
+<img src="../img/teorema-cap.png" />
+</figure>
+</section><section id="teorema-cap-iii" class="slide level2">
+<h2><span class="header-section-number">6.25</span> Teorema CAP (III)</h2>
+<ul>
+<li>Definiciones:
+<ul>
+<li><strong>Consistencia</strong>: al realizar una consulta o inserción siempre se tiene que recibir la misma información, con independencia del nodo o servidor que procese la petición.</li>
+<li><strong>Disponibilidad</strong>: que todos los clientes puedan leer y escribir, aunque se haya caído uno de los nodos.</li>
+<li><strong>Tolerancia a fallos</strong>: implica que el sistema tiene que seguir funcionando aunque existan fallos o caídas parciales que dividan el sistema.</li>
+</ul></li>
+</ul>
+</section><section id="teorema-cap-iv" class="slide level2">
+<h2><span class="header-section-number">6.26</span> Teorema CAP (IV)</h2>
+<ul>
+<li>Según las condiciones que cumplan:
+<ul>
+<li><strong>AP</strong>: garantizan disponibilidad y tolerancia a fallos, pero no la consistencia. Algunas consiguen una consistencia parcial a través de la replicación y la verificación.</li>
+<li><strong>CP</strong>: garantizan consistencia y tolerancia a fallos. Para lograr la consistencia a través de los nodos, sacrifican la disponibilidad.</li>
+<li><strong>CA</strong>: garantizan consistencia y disponibilidad, pero tienen problemas con la tolerancia a fallos. Este problema lo suelen gestionar replicando los datos.</li>
+</ul></li>
+</ul>
+</section><section id="tipos-de-bd-nosql" class="slide level2">
+<h2><span class="header-section-number">6.27</span> Tipos de BD NoSQL</h2>
+<ul>
+<li>Existen 4 tipos de bases de datos NoSQL:
+<ul>
+<li><strong>Orientadas a documentos</strong></li>
+<li><strong>Orientadas a columnas</strong></li>
+<li><strong>De clave valor</strong></li>
+<li><strong>En grafo</strong></li>
+</ul></li>
+</ul>
+</section><section id="orientadas-a-documentos" class="slide level2">
+<h2><span class="header-section-number">6.28</span> Orientadas a documentos</h2>
+<ul>
+<li><strong>Gestionan datos semi estructurados</strong> almacenados en algún formato estándar como XML o JSON. Son las más versátiles y se pueden utilizar en muchos proyectos, incluso aquellos que tradicionalmente funcionarían sobre bases de datos relacionales.</li>
+<li>En esta categoría encontramos:
+<ul>
+<li><strong>MongoDB</strong>: probablemente la más famosa del momento. Algunas compañías la utilizan son Foursquare o eBay.</li>
+<li><strong>CouchDB</strong>: es de Apache y sus datos son accesibles vía una API REST. Es utilizada por compañías como Credit Suisse y la BBC.</li>
+</ul></li>
+</ul>
+</section><section id="orientadas-a-columnas" class="slide level2">
+<h2><span class="header-section-number">6.29</span> Orientadas a columnas</h2>
+<ul>
+<li>Están pensadas para realizar consultas y agregaciones sobre grandes cantidades de datos. Funcionan de forma parecida a las bases de datos relacionales, pero almacenando <strong>columnas de datos en lugar de registros</strong>.</li>
+<li>En esta categoría encontramos:
+<ul>
+<li><strong>Cassandra</strong>: incluida en esta sección, aunque en realidad sigue un modelo híbrido entre orientada a columnas y clave-valor. Es utilizada por Facebook y Twitter.</li>
+<li><strong>HBase</strong>: Escrita en Java y mantenida por el Projecto Hadoop de Apache, se utiliza para procesar grandes cantidades de datos. La utilizan Facebook, Twitter o Yahoo.</li>
+</ul></li>
+</ul>
+</section><section id="de-clave-valor" class="slide level2">
+<h2><span class="header-section-number">6.30</span> De clave valor</h2>
+<ul>
+<li>Son las más sencillas de entender. Simplemente <strong>guardan tuplas que contienen una clave y su valor</strong>. Cuándo se quiere recuperar un dato, simplemente se busca por su clave y se recupera el valor.</li>
+<li>En esta categoría encontramos:
+<ul>
+<li><strong>DynamoDB</strong>: desarrollada por Amazon, es una opción de almacenaje que podemos usar desde los Amazon Web Services. La utilizan el Washington Post y Scopely.</li>
+<li><strong>Redis</strong>: desarrollada en C y de código abierto, es utilizada por Craiglist y Stack Overflow (a modo de caché).</li>
+</ul></li>
+</ul>
+</section><section id="en-grafo" class="slide level2">
+<h2><span class="header-section-number">6.31</span> En grafo</h2>
+<ul>
+<li>Basadas en la teoría de grafos <strong>utilizan nodos y aristas</strong> para representar los datos almacenados. Son muy útiles para guardar información en modelos con muchas relaciones, como redes y conexiones sociales.</li>
+<li>En esta categoría encontramos:
+<ul>
+<li><strong>Infinite Graph</strong>: escrita en Java y C++ por la compañía Objectivity. Tiene dos modelos de licenciamiento: uno gratuito y otro de pago.</li>
+<li><strong>Neo4j</strong>: base de datos de código abierto, escrita en Java por la compañía Neo Technology. Utilizada por compañías como HP, Infojobs o Cisco.</li>
+</ul></li>
+</ul>
+</section>
+<section id="entorno-de-ejecución-en-cliente" class="titleslide slide level1"><h1><span class="header-section-number">7</span> Entorno de ejecución en cliente</h1></section><section id="páginas-web-estáticas" class="slide level2">
+<h2><span class="header-section-number">7.1</span> Páginas web estáticas</h2>
+<ul>
+<li>Son páginas en las que el navegador renderiza el <strong>HTML con estilos CSS e imágenes pero sin JavaScript</strong>.</li>
+<li>En estas páginas, cada vez que el usuario hace clic en un enlace, el navegador recarga por completo la página web.</li>
+<li>Las primeras páginas web eran así, y hoy <strong>todavía se siguen utilizando bastante</strong>: en páginas personales, en 'landings pages', en 'home pages', en páginas de documentación, etc.</li>
+</ul>
+</section><section id="páginas-web-dinámicas" class="slide level2">
+<h2><span class="header-section-number">7.2</span> Páginas web dinámicas</h2>
+<ul>
+<li>El cliente es dinámico porque las páginas <strong>incluyen código JavaScript</strong> que se ejecuta en el navegador.</li>
+<li>Dependiendo de cómo se use el JavaScript en el cliente, las aplicaciones se pueden dividir en tres tipos:
+<ul>
+<li>JavaScript para efectos gráficos.</li>
+<li>JavaScript con peticiones en segundo plano (AJAX)</li>
+<li>Single Page Application.</li>
+</ul></li>
+</ul>
+</section><section id="javascript-para-efectos-gráficos" class="slide level2">
+<h2><span class="header-section-number">7.3</span> JavaScript para efectos gráficos</h2>
+<ul>
+<li>JavaScript se diseñó, entre otras cosas, para <strong>añadir efectos gráficos</strong> básicos a las páginas cuando el CSS era muy limitado.</li>
+<li>La gran mayoría de las aplicaciones web que existen en Internet utilizan JavaScript al menos con este propósito.</li>
+</ul>
+</section><section id="javascript-peticiones-en-segundo-plano" class="slide level2">
+<h2><span class="header-section-number">7.4</span> JavaScript peticiones en segundo plano</h2>
+<figure>
+<img src="../img/ajax.png" />
+</figure>
+<ul>
+<li>JavaScript se usa también para no tener que recargar la página completa, realizando <strong>peticiones en segundo plano</strong> que actualizan sólo aquellas partes de la página necesarias.</li>
+<li>A esta técnica se la conoce como AJAX (Asynchronous JavaScript And XML), y la gran mayoría de las aplicaciones de hoy en día lo usan para <strong>mejorar la experiencia del usuario</strong>.</li>
+</ul>
+</section><section id="single-page-application" class="slide level2">
+<h2><span class="header-section-number">7.5</span> Single Page Application</h2>
+<ul>
+<li>En este caso, la aplicación web es un conjunto de recursos HTML y CSS estáticos que se cargan en el navegador, y el contenido dinámico se carga en segundo plano con JavaScript.</li>
+<li>Una SPA es <strong>una única página cuyo contenido va cambiando según el usuario interactúa</strong> con botones, pestañas, etc.</li>
+</ul>
+</section><section id="historia-de-los-clientes-web" class="slide level2">
+<h2><span class="header-section-number">7.6</span> Historia de los clientes web</h2>
+<ul>
+<li>Los principales clientes web son o han sido:
+<ul>
+<li>Mosaic (1993)</li>
+<li>Netscape Navigator (1994)</li>
+<li>Internet Explorer (1995)</li>
+<li>Opera (1996)</li>
+<li>Mozilla Firefox (2002)</li>
+<li>iPhone (2007)</li>
+<li>Android (2008)</li>
+<li>Google Chrome (2008)</li>
+<li>Firefox OS (2013)</li>
+</ul></li>
+</ul>
+</section><section id="mosaic-1993" class="slide level2">
+<h2><span class="header-section-number">7.7</span> Mosaic (1993)</h2>
+<figure>
+<img src="../img/mosaic.png" />
+</figure>
+<ul>
+<li>En <strong>1993</strong>, salió a la luz <strong>Mosaic</strong> el primer navegador que permitía ver gráficamente los documentos escritos en HTML y seguir los enlaces entre distintos sitios web.</li>
+</ul>
+</section><section id="netscape-navigator-1994" class="slide level2">
+<h2><span class="header-section-number">7.8</span> Netscape Navigator (1994)</h2>
+<figure>
+<img src="../img/netscape.png" />
+</figure>
+<ul>
+<li>En <strong>1994</strong>, nació <strong>Netscape Navigator</strong>, como evolución de Mosaic.</li>
+</ul>
+</section><section id="internet-explorer-1995" class="slide level2">
+<h2><span class="header-section-number">7.9</span> Internet Explorer (1995)</h2>
+<figure>
+<img src="../img/internet-explorer.png" />
+</figure>
+<ul>
+<li>En <strong>1995</strong>, <strong>Microsoft</strong> lanza el navegador <strong>Internet Explorer</strong>.</li>
+<li>Llegó a tener una cuota del 70%, pero hoy en día, aunque es el <strong>segundo navegador más usado</strong>, está en declive de sobre todo por el impulso de Google Chrome.</li>
+</ul>
+</section><section id="opera-1996" class="slide level2">
+<h2><span class="header-section-number">7.10</span> Opera (1996)</h2>
+<figure>
+<img src="../img/opera.png" />
+</figure>
+<ul>
+<li>En <strong>1996</strong>, nació <strong>Opera</strong> un navegador que nunca ha tenido una gran cuota de mercado.</li>
+</ul>
+</section><section id="safari-2003" class="slide level2">
+<h2><span class="header-section-number">7.11</span> Safari (2003)</h2>
+<figure>
+<img src="../img/safari.png" />
+</figure>
+<ul>
+<li>En <strong>2003</strong>, Apple lanza <strong>Safari</strong>, un navegador basado en WebKit (libre).</li>
+<li>Hoy en día es el <strong>cuarto navegador más usado</strong>.</li>
+</ul>
+</section><section id="mozilla-firefox-2002" class="slide level2">
+<h2><span class="header-section-number">7.12</span> Mozilla Firefox (2002)</h2>
+<figure>
+<img src="../img/firefox.png" />
+</figure>
+<ul>
+<li>En <strong>2002</strong>, nace el el navegador libre <strong>Mozilla Firefox</strong>.</li>
+<li>Hoy en día es el <strong>tercer navegador más usado</strong>.</li>
+</ul>
+</section><section id="iphone-2007" class="slide level2">
+<h2><span class="header-section-number">7.13</span> iPhone (2007)</h2>
+<figure>
+<img src="../img/iphone.png" />
+</figure>
+<ul>
+<li>En <strong>2007</strong>, <strong>Steve Jobs</strong>, cofundador de Appel, lanza el <strong>iPhone</strong>.</li>
+</ul>
+</section><section id="android-2008" class="slide level2">
+<h2><span class="header-section-number">7.14</span> Android (2008)</h2>
+<figure>
+<img src="../img/android.png" />
+</figure>
+<ul>
+<li>En <strong>2008</strong>, se vende el primer smartphone con el sistema operativo <strong>Android</strong>.</li>
+</ul>
+</section><section id="google-chrome-2008" class="slide level2">
+<h2><span class="header-section-number">7.15</span> Google Chrome (2008)</h2>
+<figure>
+<img src="../img/chrome.png" />
+</figure>
+<ul>
+<li>En <strong>2008</strong>, el gigante <strong>Google</strong> lanza al mercardo su propio navegador: el <strong>Google Chrome</strong>.</li>
+<li>Hoy en día es el <strong>navegador más utilizado</strong> con más de un 40% de cuota.</li>
+</ul>
+</section><section id="firefox-os-2013" class="slide level2">
+<h2><span class="header-section-number">7.16</span> Firefox OS (2013)</h2>
+<figure>
+<img src="../img/firefox-os.png" />
+</figure>
+<ul>
+<li>En <strong>2013</strong>, la fundación Mozilla lanza el sistema operativo <strong>Firefox OS</strong>.</li>
+</ul>
+</section><section id="cuota-navegadores" class="slide level2">
+<h2><span class="header-section-number">7.17</span> Cuota Navegadores</h2>
+<figure>
+<img src="../img/cuota-navegadores.png" />
+</figure>
+<div style="text-align:center">
+<a href="http://gs.statcounter.com/">http://gs.statcounter.com/</a>
+</div>
+</section>
+<section id="tecnologías-de-cliente" class="titleslide slide level1"><h1><span class="header-section-number">8</span> Tecnologías de cliente</h1></section><section id="introducción-2" class="slide level2">
+<h2><span class="header-section-number">8.1</span> Introducción</h2>
+<ul>
+<li>El cliente web por excelencia es el <strong>navegador web</strong>, aunque ahora existen otros clientes como pueden ser <strong>las aplicaciones nativas de los dispositivos móviles</strong>, ahora bien la tendencia es la de utilizar los <strong>estándares web</strong> en dichas aplicaciones.</li>
+<li>Aunque la tendencia es usar cada vez más tecnologías estándares, <strong>aún se usan otras tecnologías no estándar</strong>.</li>
+</ul>
+</section><section id="estándares-web" class="slide level2">
+<h2><span class="header-section-number">8.2</span> Estándares web</h2>
+<figure>
+<img src="../img/w3c.png" />
+</figure>
+<ul>
+<li>El <strong>W3C</strong> (World Wide Web Consortium) es una comunidad internacional que desarrolla estándares abiertos que aseguran el crecimiento de la Web a largo plazo.</li>
+<li><strong>HTML</strong> (Hypertext Markup Language) and <strong>CSS</strong> (Cascading Style Sheets) son dos de las tecnologías principales para la construcción de páginas web.</li>
+</ul>
+</section><section id="html-i" class="slide level2">
+<h2><span class="header-section-number">8.3</span> HTML (I)</h2>
+<figure>
+<img src="../img/html5.png" />
+</figure>
+<ul>
+<li>HTML proporciona la <strong>información estructurada</strong> en secciones, párrafos, título, imágenes, etc.</li>
+</ul>
+</section><section id="html-ii" class="slide level2">
+<h2><span class="header-section-number">8.4</span> HTML (II)</h2>
+<ul>
+<li>La versión actual es <strong>HTML5</strong>, que aunque todavía no está finalizada, la mayoría de los navegadores implementan gran parte de la especificación.</li>
+<li>Ha supuesto una revolución en el cliente pues ofrece muchas tecnologías avanzadas:
+<ul>
+<li><strong>Multimedia</strong>: audio, vídeo, canvas, webgl, etc.</li>
+<li><strong>Comunicaciones</strong>: websockets</li>
+<li><strong>Concurrencia</strong>: webworkers</li>
+<li><strong>Almacenamiento</strong>: storage</li>
+<li><strong>Otros</strong>: geoposicionamiento, drag&amp;drop, acceso a la cámara, al micrófono, etc.</li>
+</ul></li>
+</ul>
+</section><section id="css-i" class="slide level2">
+<h2><span class="header-section-number">8.5</span> CSS (I)</h2>
+<figure>
+<img src="../img/css3.png" />
+</figure>
+<ul>
+<li>CSS proporciona la <strong>distribución de los elementos y su estilo</strong> (colores, tipos de letra, fondos, efectos...)</li>
+</ul>
+</section><section id="css-ii" class="slide level2">
+<h2><span class="header-section-number">8.6</span> CSS (II)</h2>
+<ul>
+<li>CSS es un lenguaje usado para definir la presentación de un documento estructurado escrito en HTML, XML, SVG o incluso interfaces de usuario de otras tecnologías (JavaFX)</li>
+<li>Su versión actual es <strong>CSS3</strong>, que aunque todavía no está finalizada, la mayoría de los navegadores implementan gran parte de la especificación.</li>
+</ul>
+</section><section id="preprocesadores-i" class="slide level2">
+<h2><span class="header-section-number">8.7</span> Preprocesadores (I)</h2>
+<ul>
+<li>Procesan código escrito en un lenguaje “A+” (HAML, Coffeescritp, SCSS o LESS) y generan archivos escritos en otro lenguaje “A” (HTML, Javascript y CSS, respectivamente). Los lenguajes fuente son similares a los que producen, pero más sencillos de escribir (y de leer y mantener).</li>
+<li>En el caso de CSS los preprocesadores <strong>suplen ciertas carencias que tiene el propio lenguaje</strong> como puede ser: variables, herencias, funciones, imports, ...</li>
+</ul>
+</section><section id="preprocesadores-ii" class="slide level2">
+<h2><span class="header-section-number">8.8</span> Preprocesadores (II)</h2>
+<ul>
+<li>Los preprocesadores CSS más importantes son: <strong>Sass</strong> y <strong>less</strong>.</li>
+</ul>
+<figure>
+<img src="../img/preprocesadores-css.png" />
+</figure>
+</section><section id="frameworks-css-i" class="slide level2">
+<h2><span class="header-section-number">8.9</span> Frameworks CSS (I)</h2>
+<ul>
+<li>Facilitan la tarea de crear sitios <strong>Responsive Web Design</strong> (diseño que se adapta a los distintos clientes: móvil, tablet, ordenador) mediante el uso de diseño con rejillas, uso de clases, componentes, etc.</li>
+</ul>
+<figure>
+<img src="../img/responsive-web-design.png" />
+</figure>
+</section><section id="frameworks-css-ii" class="slide level2">
+<h2><span class="header-section-number">8.10</span> Frameworks CSS (II)</h2>
+<ul>
+<li>Los frameworks CSS mas importantes son: <strong>Zurb Foundation</strong> y <strong>Twitter Bootstrap</strong>.</li>
+</ul>
+<figure>
+<img src="../img/frameworks-css.png" />
+</figure>
+</section><section id="javascript-i" class="slide level2">
+<h2><span class="header-section-number">8.11</span> JavaScript (I)</h2>
+<figure>
+<img src="../img/javascript.png" />
+</figure>
+<ul>
+<li>Con JavaScript se <strong>puede modificar la página y ejecutar código cuando se interactúa con ella</strong> (a través del modelo de objetos del documento DOM)</li>
+</ul>
+</section><section id="javascript-ii" class="slide level2">
+<h2><span class="header-section-number">8.12</span> JavaScript (II)</h2>
+<ul>
+<li>Aunque algunos elementos de la sintaxis recuerden a Java, <strong>no tiene nada que ver con Java</strong>, se eligió ese nombre por razones de marketing, pues cuando se publicó Java estaba en auge.</li>
+<li>Es un lenguaje de programación basado en el estándar <strong>ECMAScript</strong> de ECMA (otra organización diferente al W3C)</li>
+<li>Hay ligeras diferencias en la implementación de JS de los navegadores, aunque actualmente todos son bastante compatibles entre sí (en el pasado no fue así)</li>
+</ul>
+</section><section id="javascript-iii" class="slide level2">
+<h2><span class="header-section-number">8.13</span> JavaScript (III)</h2>
+<ul>
+<li>Inicialmente era un lenguaje interpretado, pero actualmente se ejecuta con máquinas virtuales en los navegadores (velocidad de ejecución y eficiencia de memoria)</li>
+<li>Características:
+<ul>
+<li><strong>Tipado dinámico</strong> (habitual en los lenguajes de script)</li>
+<li><strong>Funcional y orientado a objetos</strong> (basado en prototipos)</li>
+</ul></li>
+</ul>
+</section><section id="librerías-javascript" class="slide level2">
+<h2><span class="header-section-number">8.14</span> Librerías JavaScript</h2>
+<figure>
+<img src="../img/librerias-js.png" />
+</figure>
+<ul>
+<li>Existen multitud de librerías JavaScript, aunque las más utilizadas son:
+<ul>
+<li><strong>jQuery</strong>: aporta facilidad de uso y compatibilidad entre navegadores. Se usa para gestionar el interfaz y peticiones ajax.</li>
+<li><strong>underscore.js</strong>: permite trabajar con un enfoque más funcional y permite gestionar plantillas para generar HTML.</li>
+</ul></li>
+</ul>
+</section><section id="frameworks-javascript" class="slide level2">
+<h2><span class="header-section-number">8.15</span> Frameworks Javascript</h2>
+<figure>
+<img src="../img/frameworks-js.png" />
+</figure>
+<ul>
+<li>Además de librerías, también existen frameworks de alto nivel que estructuran una aplicación de forma completa, siendo los más populares: <strong>Angular.js, Backbone.js y Ember</strong>.</li>
+</ul>
+</section><section id="tecnologías-no-estándar-en-la-web" class="slide level2">
+<h2><span class="header-section-number">8.16</span> Tecnologías no estándar en la web</h2>
+<ul>
+<li>La web ha avanzado y evolucionado gracias a tecnologías no estándar incluidas en los navegadores mediante plugins.</li>
+<li>Algunas llegaron a convertirse en estándares “de facto”, como es el caso de <strong>Adobe Flash</strong>.</li>
+<li>La llegada de los dispositivos móviles, consolas y televisiones conectadas (SmartTVs) y <strong>la estandarización de HTML5 han hecho que estas tecnologías no estándar estén en desuso</strong>.</li>
+</ul>
+</section><section id="adobe-flash-i" class="slide level2">
+<h2><span class="header-section-number">8.17</span> Adobe Flash (I)</h2>
+<figure>
+<img src="../img/flash.png" />
+</figure>
+<ul>
+<li>Es una tecnología <strong>usada principalmente para incrustar contenido multimedia interactivo</strong> en páginas web.</li>
+<li>Durante muchos años fue la única forma de tener interactividad, animaciones, vídeos, juegos... en la web.</li>
+</ul>
+</section><section id="adobe-flash-ii" class="slide level2">
+<h2><span class="header-section-number">8.18</span> Adobe Flash (II)</h2>
+<ul>
+<li>Es una tecnología <strong>propietaria y cerrada</strong>, y aunque es gratuita para los usuarios, no lo es para los desarrolladores y servidores.</li>
+<li>Ha sido acusada de de que no es eficiente, no es abierta y por tanto, no es el futuro de la web (Abril 2010 - Steve Jobs por el iPhone y iPad)</li>
+<li>Adobe lo ha acabado reconociendo y no seguirá apostando por Flash como la herramienta básica de la web interactiva (Nov 2011)</li>
+</ul>
+</section><section id="java-applets" class="slide level2">
+<h2><span class="header-section-number">8.19</span> Java Applets</h2>
+<figure>
+<img src="../img/java.png" />
+</figure>
+<ul>
+<li>Los applets de Java fueron <strong>los precursores de Flash</strong>, aunque hoy están en desuso.</li>
+</ul>
+</section><section id="microsoft-silverlight" class="slide level2">
+<h2><span class="header-section-number">8.20</span> Microsoft Silverlight</h2>
+<figure>
+<img src="../img/silverlight.png" />
+</figure>
+<ul>
+<li>La <strong>apuesta de Microsoft para competir con Flash</strong>, aunque hoy están en desuso.</li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Enero 2014</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>
