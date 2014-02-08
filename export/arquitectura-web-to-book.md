@@ -6,6 +6,8 @@
 
 ## Índice
 
+Contenidos:
+
 -  Acerca de
 
 -  Introducción
@@ -88,11 +90,11 @@ Mi nick: **asanzdiego**
 
 ## Créditos
 
-Agradecimientos a **Micael Gallego** ([http://twitter.com/micael_gallego](http://twitter.com/micael_gallego))
+Agradecimientos a **Micael Gallego** [http://twitter.com/micael_gallego](http://twitter.com/micael_gallego)
 
--  [Introducción a las aplicaciones web](http://www.slideshare.net/micaelgallego/qu-es-la-web-30036167)
+-  Introducción a las aplicaciones web [http://www.slideshare.net/micaelgallego/qu-es-la-web-30036167](http://www.slideshare.net/micaelgallego/qu-es-la-web-30036167)
 
--  [Tecnologías de desarrollo de aplicaciones web)](http://www.slideshare.net/micaelgallego/tema2-tecnologas-de-desarrollo-de-aplicaciones-web)
+-  Tecnologías de desarrollo de aplicaciones web [http://www.slideshare.net/micaelgallego/tema2-tecnologas-de-desarrollo-de-aplicaciones-web](http://www.slideshare.net/micaelgallego/tema2-tecnologas-de-desarrollo-de-aplicaciones-web)
 
 Estas **transparencias** están hechas con:
 
@@ -110,13 +112,17 @@ El **código** de los programas están bajo una licencia:
 
 ## Fuentes
 
--  [SlideShare](http://www.slideshare.net/asanzdiego/arquitectura-web)
+Otros formatos:
 
--  [Deck Slides](http://asanzdiego.github.io/arquitectura-web/slides/export/arquitectura-web-deck-slides.html)
+-  SlideShare [http://www.slideshare.net/asanzdiego/arquitectura-web-30984535](http://www.slideshare.net/asanzdiego/arquitectura-web-30984535)
 
--  [Reveal Slides](http://asanzdiego.github.io/arquitectura-web/slides/export/arquitectura-web-reveal-slides.html)
+-  Deck Slides [http://asanzdiego.github.io/arquitectura-web/export/arquitectura-web-deck-slides.html](http://asanzdiego.github.io/arquitectura-web/export/arquitectura-web-deck-slides.html)
 
--  [Plain HTML](http://asanzdiego.github.io/arquitectura-web/slides/export/arquitectura-web.html)
+-  Reveal Slides [http://asanzdiego.github.io/arquitectura-web/export/arquitectura-web-reveal-slides.html](http://asanzdiego.github.io/arquitectura-web/export/arquitectura-web-reveal-slides.html)
+
+-  Plain HTML [http://asanzdiego.github.io/arquitectura-web/export/arquitectura-web.html](http://asanzdiego.github.io/arquitectura-web/export/arquitectura-web.html)
+
+-  Markdown [http://raw.github.com/asanzdiego/arquitectura-web/master/md/arquitectura-web.md](http://raw.github.com/asanzdiego/arquitectura-web/master/md/arquitectura-web.md)
 
 # Introducción
 
