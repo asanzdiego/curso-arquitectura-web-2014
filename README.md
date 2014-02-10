@@ -18,4 +18,4 @@
 
 ## Créditos
 
-- Estas **transparencias** y estos **apuntes** están hechos con [marckdownslides](http://github.com/asanzdiego/markdownslides)
+- Estas **transparencias** y estos **apuntes** están hechos con [MarkdownSlides](http://github.com/asanzdiego/markdownslides) 
